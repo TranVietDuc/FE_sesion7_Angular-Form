@@ -1,0 +1,18 @@
+<p>
+  template-driven-form-validation works!
+</p>
+
+<form (ngSubmit)="onSubmit(formSignIn)" #formSignIn="ngForm">
+  <input placeholder="Email" ngModel #txtEmail="ngModel" name="email" required email>
+  <p *ngIf="txtEmail.touched && txtEmail.errors?.required">Email is not valid</p>
+  <p *ngIf="txtEmail.touched && txtEmail.errors?.email">Email is email</p>
+
+  <br>
+  <input type="password" placeholder="Password" [(ngModel)]="password" #txtPassword='ngModel' name="password" minlength="6">
+  <p *ngIf="txtEmail.touched && txtEmail.errors?.minlength">Email is email</p>
+  <br>
+  <button [disabled]="formSignIn.invalid" >Submit</button>
+</form>
+
+<p>{{txtEmail.errors|json}}</p>
+<p>{{txtPassword.errors|json}}</p>
